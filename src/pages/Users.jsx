@@ -82,6 +82,7 @@ const Users = () => {
 const UserCard = ({ user, jwt }) => {
   // fetch information from api/users/download/id
   const handleClickUser = () => {
+    console.log("clicked");
     // run get api
     axios
       .get(`${HOST}/api/users/download/${user.id}`, {
