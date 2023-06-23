@@ -79,7 +79,7 @@ const Users = () => {
   );
 };
 
-const UserCard = ({ user, jwt }) => {
+const UserCard = ({ user }) => {
   const [jwt] = useLocalStorage("token", "");
   const [isLoading, setLoading] = useState(false);
   const navigate = useNavigate();
