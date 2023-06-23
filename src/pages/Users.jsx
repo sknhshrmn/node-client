@@ -80,29 +80,33 @@ const Users = () => {
 };
 
 const UserCard = ({ user, jwt }) => {
+  const [jwt] = useLocalStorage("token", "");
+  const [isLoading, setLoading] = useState(false);
+  const navigate = useNavigate();
   // fetch information from api/users/download/id
   const handleClickUser = () => {
-    console.log("clicked");
+    setLoading(true);
     // run get api
-    // axios
-    //   .get(`${HOST}/api/users/download/${user.id}`, {
-    //     headers: { Authorization: `Bearer ${jwt}` },
-    //   })
-    //   .then(function (response) {
-    //     // handle success
-    //     console.log(response.data);
-    //   })
-    //   .catch(function (error) {
-    //     // handle error
-    //     console.log(error);
-    //     // console.log(JSON.stringify(error));
-    //     // if (error.response.status === 401) {
-    //     //   navigate("login");
-    //     // }
-    //   })
-    //   .finally(function () {
-    //     // always executed
-    //   });
+    axios
+      .get(`${HOST}/api/users/download/${user.id}`, {
+        headers: { Authorization: `Bearer ${jwt}` },
+      })
+      .then(function (response) {
+        // handle success
+        console.log(response.data.data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.error(error);
+        console.log(JSON.stringify(error));
+        if (error.response.status === 401) {
+          navigate("login");
+        }
+      })
+      .finally(function () {
+        // always executed
+        setLoading(false);
+      });
   };
   return (
     <div
