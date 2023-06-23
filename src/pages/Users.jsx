@@ -84,25 +84,25 @@ const UserCard = ({ user, jwt }) => {
   const handleClickUser = () => {
     console.log("clicked");
     // run get api
-    axios
-      .get(`${HOST}/api/users/download/${user.id}`, {
-        headers: { Authorization: `Bearer ${jwt}` },
-      })
-      .then(function (response) {
-        // handle success
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-        // console.log(JSON.stringify(error));
-        // if (error.response.status === 401) {
-        //   navigate("login");
-        // }
-      })
-      .finally(function () {
-        // always executed
-      });
+    // axios
+    //   .get(`${HOST}/api/users/download/${user.id}`, {
+    //     headers: { Authorization: `Bearer ${jwt}` },
+    //   })
+    //   .then(function (response) {
+    //     // handle success
+    //     console.log(response.data);
+    //   })
+    //   .catch(function (error) {
+    //     // handle error
+    //     console.log(error);
+    //     // console.log(JSON.stringify(error));
+    //     // if (error.response.status === 401) {
+    //     //   navigate("login");
+    //     // }
+    //   })
+    //   .finally(function () {
+    //     // always executed
+    //   });
   };
   return (
     <div
